@@ -8,10 +8,6 @@ describe("Login Test", () => {
     it('Registration page', () => {
         cy.get('li:nth-of-type(2) > .nav-buttons.nav-link').click()
     })
-    it('All empty fields', () => {   
-        cy.get('input[type=checkbox]')
-        cy.get('button[type=submit]').click()
-    })
     it('Filling the form', () => {
         cy.get('#first-name').type('Petar')
         cy.get('#last-name').type('Petrovic')

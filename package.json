@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
+  "devDependencies": {
     "cypress": "^6.5.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "./node_modules/.bin/cypress open"
   },
