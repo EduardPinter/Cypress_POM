@@ -10,5 +10,8 @@
     "test": "./node_modules/.bin/cypress open"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "faker": "^5.4.0"
+  }
 }
