@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 
 import { loginPage } from '../page_objects/loginPage.js'
+import { createGallery } from "../page_objects/createGallery"
 
  const locators = require("../fixtures/locators.json")
 
@@ -19,13 +20,13 @@ describe("Login Test", () => {
     })
 
     it("Click on Create Gallery", () => {
-        loginPage.creatingNewGalleryPage()
+        createGallery.creatingNewGalleryPage()
         
     })
 
 
     it("Create a Gallery", () => {
-        loginPage.createAGallery("title", "desc", "https://www.google.com/js.jpg")
+        createGallery.createAGallery("title", "desc", "https://www.google.com/js.jpg")
         
     })
 /*     it('Log out', () => {
