@@ -18,6 +18,20 @@ class CreateGallery {
         return cy.contains('Submit')
     }
 
+    titleInputType(title) {
+        this.titleInput.type(title)
+    }
+    descInputType(desc) {
+        this.descInput.type(desc)
+    }
+    imageUrlInputField(url) {
+        this.imageUrlInput.type(url)
+    }
+
+    submitButtonCreateGalleryClick(){
+        this.submitButtonCreateGallery.click()
+    }
+
     creatingNewGalleryPage(){
         this.createGalleryPage.click()
     }

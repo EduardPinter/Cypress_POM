@@ -16,6 +16,15 @@
         "passwordConfirmation" : "#password-confirmation",
         "checkbox" : "input[type=checkbox]",
         "submit" : "button[type=submit]",
-        "registerPage" : "li:nth-of-type(2) > .nav-buttons.nav-link"
+        "registerPage" : "a[href='/register']"
+    },
+    "allGalleries": {
+        "inputField": "input[type=text]",
+        "filterButton": "button[type=button]",
+        "login": "a[href='/login']",
+        "myGalleries": "a[href='/my-galleries']",
+        "createAGallery": "a[href='/create']"
+
     }
+    
 }

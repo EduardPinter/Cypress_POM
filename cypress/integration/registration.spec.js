@@ -21,11 +21,11 @@ describe("Login Test", () => {
     let pass = faker.internet.password()
 
     it('Filling the form', () => {
-        cy.get('#first-name').type(faker.name.firstName())
-        cy.get('#last-name').type(faker.name.lastName())
-        cy.get('#email').type(faker.internet.email())
-        cy.get('#password').type(pass)
-        cy.get('#password-confirmation').type(pass)
+        cy.get('#first-name').type("Petar")
+        cy.get('#last-name').type("Petrovic")
+        cy.get('#email').type("ep@gmail.com")
+        cy.get('#password').type("bboy96ns")
+        cy.get('#password-confirmation').type("bboy96ns")
         cy.get('input[type=checkbox]').check()
         cy.get('button[type=submit]').click()
 

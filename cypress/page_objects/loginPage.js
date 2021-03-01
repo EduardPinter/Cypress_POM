@@ -64,13 +64,6 @@ class LoginPage {
         this.submitButton.click()
     }
 
-    createAGallery(title,desc,imageUrl)
-    {
-        this.titleInput.type(title)
-        this.descInput.type(desc)
-        this.imageUrlInput.type(imageUrl)
-        this.submitButtonCreateGallery.click()
-    }
 }
 
 export const loginPage = new LoginPage()
