@@ -2,9 +2,12 @@
 
 import { loginPage } from '../page_objects/loginPage.js'
 import { createGallery } from "../page_objects/createGallery"
+import { registerPage } from "../page_objects/registerPage"
 
  const locators = require("../fixtures/locators.json")
  var faker = require('faker')
+ const dataString = require("../fixtures/data.json")
+ const errorMessages = require("../fixtures/errors.json")
 
 describe("Login Test", () => {
 
@@ -36,20 +39,22 @@ describe("Login Test", () => {
     })
 
     it("Title - 1 char input", () => {
-        createGallery.createAGallery('p', "desc", "https://www.google.com/js.jpg")
+        createGallery.createAGallery(dataString.createGallery.galleryTitle1Char, "desc", "https://www.google.com/js.jpg")
+        createGallery.titleLessThan1Char.should("contain", errorMessages.createGallery.lessThan1Char).and('have.class', 'alert-danger').and('have.css', "color", "rgb(114, 28, 36)" )
         cy.wait(1000)
 
     })
 
     it("Title - massive string input", () => {
         createGallery.createAGallery(faker.random.words(150), "desc", "https://www.google.com/js.jpeg")
+        createGallery.titleMoreThan255Char.should("contain", errorMessages.createGallery.moreThan255Char)
         cy.wait(1000)
 
     })
 
     it("Image Url - empty field", () => {
-        createGallery.titleInputType("opis")
-        createGallery.descInputType("https://www.google.com/image.jpg")
+        createGallery.titleInputType(dataString.createGallery.galleryTitle)
+        createGallery.descInputType(dataString.createGallery.galleryDesc)
         createGallery.submitButtonCreateGalleryClick()
         cy.wait(1000)
 
@@ -61,8 +66,9 @@ describe("Login Test", () => {
 
     })
 
-    it("Image Url - with unsupported image format", () => {
+    it.only("Image Url - with unsupported image format", () => {
         createGallery.createAGallery('pa', "desc", "https://www.google.com/js.raw")
+        createGallery.WrongImageFormat.should("contain", errorMessages.createGallery.wrongImageFormat)
         cy.wait(1000)
 
     })

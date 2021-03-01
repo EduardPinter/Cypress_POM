@@ -50,10 +50,11 @@ describe("Login Test", () => {
     })
 
 
-    it('Logging in with valid credentials', () => {
-        cy.get(locators.login.email).clear().type('ep@gmail.com')
-        cy.get(locators.login.password).clear().type('bboy96ns')
+    it.only('Logging in with valid credentials', () => {
+        cy.get(locators.login.email).clear().type('ep@gmail.com').should("be.visible")
+        cy.get(locators.login.password).clear().type('bboy96ns').should("be.visible")
         cy.get(locators.login.submit).click()
+        cy.url().should('eq', 'https://gallery-app.vivifyideas.com/')
     })
     it('Log out', () => {
         cy.get(locators.logout.button).click()

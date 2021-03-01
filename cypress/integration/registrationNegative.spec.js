@@ -1,7 +1,11 @@
 /// <reference types="Cypress" />
 
+import { registerPage } from "../page_objects/registerPage"
+
 const locators = require("../fixtures/locators.json")
 const faker = require('faker')
+const errorMessage = require('../fixtures/errors.json')
+
 
 describe("Login Test", () => {
 
@@ -124,7 +128,7 @@ describe("Login Test", () => {
         cy.wait(1000)
 
     })
-    it('Password less than 8 chars', () => {
+    it.only('Password less than 8 chars', () => {
         cy.get(locators.register.firstName).clear().type('Petar')
         cy.get(locators.register.lastName).clear().type('Petrovic')
         cy.get(locators.register.email).clear().type('pp@test.com')
@@ -132,10 +136,11 @@ describe("Login Test", () => {
         cy.get(locators.register.passwordConfirmation).clear().type('test123')
         cy.get(locators.register.checkbox).uncheck().check()
         cy.get(locators.register.submit).click()
+        registerPage.passwordNotMatchAlert.should("contain", errorMessage.errors.passwordLessThan8)
         cy.wait(1000)
 
     })
-    it('Password only chars', () => {
+    it.only('Password only chars', () => {
         cy.get(locators.register.firstName).clear().type('Petar')
         cy.get(locators.register.lastName).clear().type('Petrovic')
         cy.get(locators.register.email).clear().type('pp@test.com')
@@ -143,6 +148,7 @@ describe("Login Test", () => {
         cy.get(locators.register.passwordConfirmation).clear().type('testtest')
         cy.get(locators.register.checkbox).uncheck().check()
         cy.get(locators.register.submit).click()
+        registerPage.passwordNotMatchAlert.should("contain", errorMessage.errors.passwordInvalid)
         cy.wait(1000)
 
     })
@@ -168,7 +174,7 @@ describe("Login Test", () => {
         cy.wait(1000)
 
     })
-    it('Password confirmation doesnt match with password', () => {
+    it.only('Password confirmation doesnt match with password', () => {
         cy.get(locators.register.firstName).clear().type('Petar')
         cy.get(locators.register.lastName).clear().type('Petrovic')
         cy.get(locators.register.email).clear().type('pp@test.com')
@@ -176,10 +182,11 @@ describe("Login Test", () => {
         cy.get(locators.register.passwordConfirmation).clear().type('test12345')
         cy.get(locators.register.checkbox).uncheck().check()
         cy.get(locators.register.submit).click()
+        registerPage.passwordNotMatchAlert.should('contain', errorMessage.errors.passwordNotMatching)
         cy.wait(1000)
 
     })
-    it('Terms and Conditions - unchecked', () => {
+    it.only('Terms and Conditions - unchecked', () => {
         cy.get(locators.register.firstName).clear().type('Petar')
         cy.get(locators.register.lastName).clear().type('Petrovic')
         cy.get(locators.register.email).clear().type('pp@test.com')
@@ -187,6 +194,7 @@ describe("Login Test", () => {
         cy.get(locators.register.passwordConfirmation).clear().type('test1234')
         cy.get(locators.register.checkbox).uncheck()
         cy.get(locators.register.submit).click()
+        registerPage.checkboxNotChecked.should('contain', errorMessage.errors.checkboxNotChecked)
         cy.wait(1000)
 
     })

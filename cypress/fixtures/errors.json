@@ -1,0 +1,14 @@
+{
+    "errors":{
+        "passwordNotMatching": "The password confirmation does not match.",
+        "passwordLessThan8":"The password must be at least 8 characters.",
+        "passwordInvalid":"The password format is invalid.",
+        "checkboxNotChecked": "The terms and conditions must be accepted."
+    },
+
+    "createGallery":{
+        "lessThan1Char": "The title must be at least 2 characters.",
+        "moreThan255Char": "The title may not be greater than 255 characters.",
+        "wrongImageFormat": "Wrong format of image"
+    }
+}

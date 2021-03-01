@@ -10,8 +10,21 @@ describe("All galleries - not logged in", () => {
     })
 
     it("Filter field, searching for existent gallery", () => {
-        cy.get(locators.allGalleries.inputField).type("test image")
+        cy.get(locators.allGalleries.inputField).type("Image555")
         cy.get(locators.allGalleries.filterButton).click()
+        cy.get("h2 > .box-title").should("contain", "Image555")
+
+    })
+
+    it.only("Filter field, matching with 2 galleries", () => {
+        cy.get(locators.allGalleries.inputField).type("5 Slika")
+        cy.get(locators.allGalleries.filterButton).click()
+        cy.get(".grid").should(($p) => {
+    expect($p).to.have.length(2)
+    expect($p.first()).to.contain('5 Slika')
+
+  })
+
     })
 
     it("Filter field, 1 char search", () => {

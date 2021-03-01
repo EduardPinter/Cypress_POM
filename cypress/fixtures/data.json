@@ -1,0 +1,30 @@
+{
+    "loginRegister": {
+
+    "firstName": "Petar",
+    "firstName1Letter": "P",
+    "lastName": "Petrovic",
+    "lastName1Letter": "P",
+    "email": "ep@gmail.com",
+    "emailWithout@": "epgmail.com",
+    "emailWithoutCom": "ep@gmail.",
+    "emailWithoutDot": "ep@gmailcom",
+    "emailWithoutFront": "@gmail.com",
+    "emailWithoutOperator": "ep@.com",
+    "password": "bboy96ns",
+    "passwordWithoutNumbers": "bboynsep",
+    "passwordLessThan8": "bboy96n"
+    
+    },
+    
+    "createGallery": {
+
+        "galleryTitle": "Test Image",
+        "galleryTitle1Char": "T",
+        "galleryDesc": "some description",
+        "workingImageUrl": "https://filedn.com/ltOdFv1aqz1YIFhf4gTY8D7/ingus-info/BLOGS/Photography-stocks3/stock-photography-slider.jpg",
+        "imageUrlWithoutExtension": "https://filedn.com/ltOdFv1aqz1YIFhf4gTY8D7/ingus-info/BLOGS/Photography-stocks3/stock-photography-slider",
+        "wrongExtensionUrl": "https://filedn.com/ltOdFv1aqz1YIFhf4gTY8D7/ingus-info/BLOGS/Photography-stocks3/stock-photography-slider.raw"
+    }
+    
+}
