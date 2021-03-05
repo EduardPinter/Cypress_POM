@@ -1,46 +1,27 @@
 class LoginPage {
 
-    get titleInput() {
-        return cy.get("#title")
-    }
-    get descInput() {
-        return cy.get("#description")
-    }
-    get imageUrlInput() {
-        return cy.get("input[type='url']")
-    }
-    
-    get emailInput() {
-        return cy.get('#email')
-    }
+    get emailInput() { return cy.get('#email') }
 
-    get passwordInput(){
-        return cy.get('#password')
-    }
+    get passwordInput() { return cy.get('#password') }
 
-    get submitButton(){
-        return cy.get('button[type="submit"]')
-    }
+    get submitButton() { return cy.get('button[type="submit"]') }
 
-    get navigationLink() {
-        return cy.get('a[href="/login"')
-    }
+    get navigationLink() { return cy.get('a[href="/login"') }
 
-    get createGalleryPage(){
-        return cy.get('a[href="/create"')
-    }
+    get submitButtonCreateGallery() { return cy.contains('Submit') }
 
-    get submitButtonCreateGallery(){
-        return cy.contains('Submit')
-    }
+    get logoutButton() { return cy.get("a[role='button ']") }
 
-    creatingNewGalleryPage(){
-        this.createGalleryPage.click()
-    }
+    get errorAlert() { return cy.get(".alert") }
 
-    visitLogin() {
-        this.navigationLink.click()
-    }
+
+    logoutButtonClick() { this.logoutButton.click() }
+
+    creatingNewGalleryPage() { this.createGalleryPage.click() }
+
+    visitLogin() { this.navigationLink.click() }
+
+    clickSubmitButton() { this.submitButton.click() }
 
     fillEmailInput(email) {
         this.emailInput.type(email)
@@ -48,10 +29,6 @@ class LoginPage {
 
     fillPasswordInput(password) {
         this.passwordInput.type(password)
-    }
-
-    clickSubmitButton() {
-        this.submitButton.click()
     }
 
     login(email,password) {

@@ -1,8 +1,11 @@
 /// <reference types="Cypress" />
 
-import { loginPage } from '../page_objects/loginPage.js'
+import { allGalleries } from "../page_objects/allGalleries"
+import { loginPage } from "../page_objects/loginPage"
+import { registerPage } from "../page_objects/registerPage"
 
 const locators = require("../fixtures/locators.json")
+const data = require('../fixtures/data.json')
 
 describe("Login Test", () => {
 
@@ -13,34 +16,34 @@ describe("Login Test", () => {
     })
 
     it("Filter field, searching for existent gallery", () => {
-        cy.get(locators.allGalleries.inputField).type("test image")
-        cy.get(locators.allGalleries.filterButton).click()
+        allGalleries.inputFieldType(data.filterHomePage.testImage)
+        allGalleries.filterButtonClick()
         cy.wait(1000)
     })
 
     it("Filter field, 1 char search", () => {
-        cy.get(locators.allGalleries.inputField).type("a")
-        cy.get(locators.allGalleries.filterButton).click()
+        allGalleries.inputFieldType(data.filterHomePage.oneChar)
+        allGalleries.filterButtonClick()
         cy.wait(1000)
     })
 
     it("My Galleries - navigation link", () => {
-        cy.get(locators.allGalleries.myGalleries).click()
+        allGalleries.clickMyGalleries()
         cy.wait(1000)
     })
 
     it("Create Gallery - navigation link", () => {
-        cy.get(locators.allGalleries.createAGallery).click()
+        allGalleries.clickCreateGallery()
         cy.wait(1000)
     })
 
     it("Login - navigation link", () => {
-        cy.get(locators.allGalleries.login).click()
+        loginPage.visitLogin()
         cy.wait(1000)
     })
 
     it("Register - navigation link", () => {
-        cy.get(locators.register.registerPage).click()
+        registerPage.registerPageVisit()
         cy.wait(1000)
     })
 

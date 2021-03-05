@@ -2,9 +2,8 @@
 
 import { loginPage } from '../page_objects/loginPage.js'
 import { createGallery } from "../page_objects/createGallery"
-import { registerPage } from "../page_objects/registerPage"
 
- const locators = require("../fixtures/locators.json")
+ // const locators = require("../fixtures/locators.json")
  var faker = require('faker')
  const dataString = require("../fixtures/data.json")
  const errorMessages = require("../fixtures/errors.json")
@@ -19,9 +18,7 @@ describe("Login Test", () => {
     })
 
     beforeEach(() => {
-        createGallery.titleInput.clear()
-        createGallery.descInput.clear()
-        createGallery.imageUrlInput.clear()
+        cy.reload
     })
 
     it("All empty fields", () => {
@@ -66,14 +63,14 @@ describe("Login Test", () => {
 
     })
 
-    it.only("Image Url - with unsupported image format", () => {
+    it("Image Url - with unsupported image format", () => {
         createGallery.createAGallery('pa', "desc", "https://www.google.com/js.raw")
         createGallery.WrongImageFormat.should("contain", errorMessages.createGallery.wrongImageFormat)
         cy.wait(1000)
 
     })
 
-    it.only("Filling 5 images", () => {
+    it("Filling 5 images", () => {
         createGallery.titleInputType("5 Slika")
         for(var i = 0; i<=4; i++){
             cy.get("input[type='url']").eq(i).type(faker.image.imageUrl() + ".jpg")
@@ -89,10 +86,20 @@ describe("Login Test", () => {
 
 
 
-  /*  it("Create a Gallery", () => {
+  it("Create a Gallery", () => {
         createGallery.createAGallery("title", "desc", "https://www.google.com/js.jpg")
         
-    }) */ 
+    })
+
+    it("Create a Gallery, Check All galleries if it is there", () => {
+        createGallery.createAGallery(dataString.createGallery.unique, dataString.createGallery.galleryDesc, dataString.createGallery.workingImageUrl)
+        cy.go("back")
+        cy.get('div.grid')
+            .children()
+            .contains(dataString.createGallery.unique).should('exist')
+
+    })
+
 /*     it('Log out', () => {
         cy.get(locators.logout.button).click()
     }) */

@@ -3,7 +3,10 @@
         "passwordNotMatching": "The password confirmation does not match.",
         "passwordLessThan8":"The password must be at least 8 characters.",
         "passwordInvalid":"The password format is invalid.",
-        "checkboxNotChecked": "The terms and conditions must be accepted."
+        "checkboxNotChecked": "The terms and conditions must be accepted.",
+        "emailTaken": "The email has already been taken.",
+        "emailInvalid": "The email must be a valid email address.",
+        "loginInvalid": "Bad Credentials"
     },
 
     "createGallery":{

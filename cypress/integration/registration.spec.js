@@ -1,6 +1,10 @@
 /// <reference types="Cypress" />
 
+import { registerPage } from "../page_objects/registerPage"
+
 const faker = require('faker')
+const data = require('../fixtures/data.json')
+const errors = require('../fixtures/errors.json')
 
 describe("Login Test", () => {
 
@@ -11,26 +15,31 @@ describe("Login Test", () => {
         randomPassword: faker.internet.password()
     }
 
-    it('Visit gallery page', () => {
+    before(() => {
         cy.visit('/')
+        registerPage.registerPageVisit()
+
     })
-    it('Registration page', () => {
-        cy.get('li:nth-of-type(2) > .nav-buttons.nav-link').click()
+
+    beforeEach(() => {
+        registerPage.firstName.clear()
+        registerPage.lastName.clear()
+        registerPage.email.clear()
+        registerPage.password.clear()
+        registerPage.passwordConfirmation.clear()
+        registerPage.checkbox.uncheck()
     })
 
     let pass = faker.internet.password()
 
     it('Filling the form', () => {
-        cy.get('#first-name').type("Petar")
-        cy.get('#last-name').type("Petrovic")
-        cy.get('#email').type("ep@gmail.com")
-        cy.get('#password').type("bboy96ns")
-        cy.get('#password-confirmation').type("bboy96ns")
-        cy.get('input[type=checkbox]').check()
-        cy.get('button[type=submit]').click()
-
-
-
+        registerPage.firstNameInput(data.loginRegister.firstName)
+        registerPage.lastNameInput(data.loginRegister.lastName)
+        registerPage.emailInput(data.loginRegister.email)
+        registerPage.passwordInput(data.loginRegister.password)
+        registerPage.passwordConfInput(data.loginRegister.password)
+        registerPage.checkboxCheck()
+        registerPage.submitClick()
 
     })
     /* it('Filling the form', () => {

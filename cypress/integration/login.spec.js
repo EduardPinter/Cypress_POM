@@ -1,63 +1,81 @@
 /// <reference types="Cypress" />
 
-const locators = require("../fixtures/locators.json")
+import { loginPage } from "../page_objects/loginPage"
+
+// const locators = require("../fixtures/locators.json")
+const data = require('../fixtures/data.json')
+const errors = require('../fixtures/errors.json')
 
 describe("Login Test", () => {
 
     before(() => {
         cy.visit('/')
-        cy.get(locators.login.loginPage).click();
+        loginPage.visitLogin()
     })
 
+    beforeEach(() => {
+        cy.reload()
+    })
     it('Attempt to login without password', () => {
-        cy.get(locators.login.email).type('ep@gmail.com')
-        cy.get(locators.login.submit).click()
+        loginPage.fillEmailInput(data.loginRegister.email)
+        loginPage.clickSubmitButton()
     })
     it('Attempt to login with incorrect email', () => {
-        cy.get(locators.login.email).clear().type('epp@gmail.com')
-        cy.get(locators.login.password).clear().type('bboy96ns')
-        cy.get(locators.login.submit).click()
+        loginPage.fillEmailInput(data.loginRegister.incorrectEmail)
+        loginPage.fillPasswordInput(data.loginRegister.password)
+        loginPage.clickSubmitButton()
+        loginPage.errorAlert.should("contain", errors.errors.loginInvalid)
     })
     it('Attempt to login with incorrect email type #1', () => {
-        cy.get(locators.login.email).clear().type('ep@gmailcom')
-        cy.get(locators.login.password).clear().type('bboy96ns')
-        cy.get(locators.login.submit).click()
+        loginPage.fillEmailInput(data.loginRegister.emailWithoutDot)
+        loginPage.fillPasswordInput(data.loginRegister.password)
+        loginPage.clickSubmitButton()
+        loginPage.errorAlert.should("contain", errors.errors.loginInvalid)
+
     })
     it('Attempt to login with incorrect email type #2', () => {
-        cy.get(locators.login.email).clear().type('ep@gmail')
-        cy.get(locators.login.password).clear().type('bboy96ns')
-        cy.get(locators.login.submit).click()
+        loginPage.fillEmailInput(data.loginRegister.emailWithoutCom)
+        loginPage.fillPasswordInput(data.loginRegister.password)
+        loginPage.clickSubmitButton()
+
     })
     it('Attempt to login with incorrect email type #3', () => {
-        cy.get(locators.login.email).clear().type('@gmail.com')
-        cy.get(locators.login.password).clear().type('bboy96ns')
-        cy.get(locators.login.submit).click()
+        loginPage.fillEmailInput(data.loginRegister.emailWithoutFront)
+        loginPage.fillPasswordInput(data.loginRegister.password)
+        loginPage.clickSubmitButton()
+
     })
     it('Attempt to login with incorrect email type #4', () => {
-        cy.get(locators.login.email).clear().type('epgmail.com')
-        cy.get(locators.login.password).clear().type('bboy96ns')
-        cy.get(locators.login.submit).click()
+        loginPage.fillEmailInput(data.loginRegister.emailWithoutAt)
+        loginPage.fillPasswordInput(data.loginRegister.password)
+        loginPage.clickSubmitButton()
+
     })
     it('Attempt to login in with incorrect password, less than 8 chars', () => {
-        cy.get(locators.login.email).clear().type('ep@gmail.com')
-        cy.get(locators.login.password).clear().type('bboy96n')
-        cy.get(locators.login.submit).click()
+        loginPage.fillEmailInput(data.loginRegister.email)
+        loginPage.fillPasswordInput(data.loginRegister.passwordLessThan8)
+        loginPage.clickSubmitButton()
+        loginPage.errorAlert.should("contain", errors.errors.loginInvalid)
+
     })
     it('Attempt to login in with incorrect password, no numbers', () => {
-        cy.get(locators.login.email).clear().type('ep@gmail.com')
-        cy.get(locators.login.password).clear().type('bboynsep')
-        cy.get(locators.login.submit).click()
+        loginPage.fillEmailInput(data.loginRegister.email)
+        loginPage.fillPasswordInput(data.loginRegister.passwordWithoutNumbers)
+        loginPage.clickSubmitButton()
+        loginPage.errorAlert.should("contain", errors.errors.loginInvalid)
+
     })
 
 
-    it.only('Logging in with valid credentials', () => {
-        cy.get(locators.login.email).clear().type('ep@gmail.com').should("be.visible")
-        cy.get(locators.login.password).clear().type('bboy96ns').should("be.visible")
-        cy.get(locators.login.submit).click()
+    it('Logging in with valid credentials', () => {
+        loginPage.login(data.loginRegister.email, data.loginRegister.password)
+        loginPage.clickSubmitButton()
         cy.url().should('eq', 'https://gallery-app.vivifyideas.com/')
     })
+})
+
+describe("Logout", () => {
     it('Log out', () => {
-        cy.get(locators.logout.button).click()
+        loginPage.logoutButtonClick()
     })
-    
 })
