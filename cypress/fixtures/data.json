@@ -6,6 +6,7 @@
         "lastName": "Petrovic",
         "lastName1Letter": "P",
         "email": "ep@gmail.com",
+        "emailOne" : "ea@gmail.com",
         "incorrectEmail": "epp@gmail.com",
         "emailWithoutAt": "epgmail.com",
         "emailWithoutCom": "ep@gmail.",

@@ -1,3 +1,8 @@
 {
-    "baseUrl":"https://gallery-app.vivifyideas.com/"
+    "baseUrl":"https://gallery-app.vivifyideas.com/",
+    "env": {
+        "user_email": "ep@gmail.com",
+        "user_password": "bboy96ns"
+    }
+
 }

@@ -54,6 +54,5 @@ describe("All galleries - not logged in", () => {
         allGalleries.filterButtonClick()
         allGalleries.galleryGrid.children().should("contain", data.createGallery.cat)
     })
-
     
 })
