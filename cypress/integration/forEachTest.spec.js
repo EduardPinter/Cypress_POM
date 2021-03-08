@@ -16,18 +16,21 @@ describe("ForEach test", () => {
         cy.reload()
     })
 
-    dataNegative.forEach(function(element) {
+    dataNegative.forEach(function(element) { // ne treba dataNegative ispred element,
+                                            // proguglati za error i kako ubaciti forEach
+
+        console.log(element)
         
-        it(dataNegative.element, () => {
-            registerPage.firstNameInput(dataNegative.element.firstName)
-            registerPage.lastNameInput(dataNegative.element.lastName)
-            registerPage.emailInput(dataNegative.element.email)
-            registerPage.passwordInput(dataNegative.element.password)
-            registerPage.passwordConfInput(dataNegative.element.passwordConfirmation)
-            registerPage.checkboxCheck()
-            registerPage.submitClick()
-            cy.wait(1500)
-        })
+        // it(`dataNegative.element`, () => {
+        //     registerPage.firstNameInput(dataNegative.element.firstName)
+        //     registerPage.lastNameInput(dataNegative.element.lastName)
+        //     registerPage.emailInput(dataNegative.element.email)
+        //     registerPage.passwordInput(dataNegative.element.password)
+        //     registerPage.passwordConfInput(dataNegative.element.passwordConfirmation)
+        //     registerPage.checkboxCheck()
+        //     registerPage.submitClick()
+        //     cy.wait(1500)
+        // })
     })
 
 
