@@ -1,0 +1,132 @@
+{
+    "allEmpty":{
+
+    },
+    "firstNameEmpty":{
+        "firstName": "",
+        "lastName": "Petrovic",
+        "email" : "eaa@gmail.com",
+        "password": "bboy96ns",
+        "passwordConfirmation": "bboy96ns"
+
+    },
+    "lastNameEmpty":{
+
+        "firstName": "Petar",
+        "lastName": "",
+        "email" : "eaa@gmail.com", 
+        "password": "bboy96ns",
+        "passwordConfirmation": "bboy96ns"
+
+    },
+    "emailEmpty":{
+
+        "firstName": "Petar",
+        "lastName": "Petrovic",
+        "email": "",
+        "password": "bboy96ns",
+        "passwordConfirmation": "bboy96ns"
+
+    },
+    "emailWithoutMonkey":{
+
+        "firstName": "Petar",
+        "lastName": "Petrovic",
+        "email": "epgmail.com",
+        "password": "bboy96ns",
+        "passwordConfirmation": "bboy96ns"
+
+
+    },
+    "emailWithoutCom":{
+
+        "firstName": "Petar",
+        "lastName": "Petrovic",
+        "email": "ep@gmail.",
+        "password": "bboy96ns",
+        "passwordConfirmation": "bboy96ns"
+
+    },
+    "emailWithoutDot":{
+
+        "firstName": "Petar",
+        "lastName": "Petrovic",
+        "email": "ep@gmailcom",
+        "password": "bboy96ns",
+        "passwordConfirmation": "bboy96ns"
+
+    },
+    "emailWithoutFront":{
+
+        "firstName": "Petar",
+        "lastName": "Petrovic",
+        "email": "@gmail.com",
+        "password": "bboy96ns",
+        "passwordConfirmation": "bboy96ns"
+
+    },
+    "emailWithoutOperator":{
+
+        "firstName": "Petar",
+        "lastName": "Petrovic",
+        "email": "ep@.com",
+        "password": "bboy96ns",
+        "passwordConfirmation": "bboy96ns"
+
+    },
+    "emailRegularString":{
+
+        "firstName": "Petar",
+        "lastName": "Petrovic",
+        "email": "petarpetrovic",
+        "password": "bboy96ns",
+        "passwordConfirmation": "bboy96ns"
+
+    },
+    "passwordEmpty":{
+
+        "firstName": "Petar",
+        "lastName": "Petrovic",
+        "email" : "eaa@gmail.com",
+        "password": "",
+        "passwordConfirmation": "bboy96ns"
+
+    },
+    "passwordOnlyLetters":{
+
+        "firstName": "Petar",
+        "lastName": "Petrovic",
+        "email" : "eaa@gmail.com", 
+        "password": "bboynsep",
+        "passwordConfirmation": "bboynsep"
+
+    },
+    "passwordLessThanEightChars":{
+
+        "firstName": "Petar",
+        "lastName": "Petrovic",
+        "email" : "eaa@gmail.com", 
+        "password": "bboy96n",
+        "passwordConfirmation": "bboy96n"
+    },
+    "confirmationPasswordEmpty":{
+
+        "firstName": "Petar",
+        "lastName": "Petrovic",
+        "email" : "eaa@gmail.com", 
+        "password": "bboy96ns",
+        "passwordConfirmation": ""
+
+
+    },
+    "confirmationPasswordNotMatching":{
+
+        "firstName": "Petar",
+        "lastName": "Petrovic",
+        "email" : "eaa@gmail.com", 
+        "password": "bboy96ns",
+        "passwordConfirmation": "bboy96ne"
+
+    }
+
+}
